@@ -9,7 +9,7 @@ class DaoVendedor extends bdconnect{
     }
 
 
-function insertArticulo($id,$nombre,$email,$password,$role){
+function insertVendedor($id,$nombre,$email,$password,$role){
     try {
     //Crear la conexión
     $conn = $this->connect();
@@ -17,13 +17,13 @@ function insertArticulo($id,$nombre,$email,$password,$role){
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //haciendo la consulta 
     //usando Sentencias Preparadas 'Prepared Statement'
-    $sql = $conn->prepare ("INSERT INTO productos (id,nombre,email,password,role) VALUES (:id,:nombre,:email,:password,:role)");
+    $sql = $conn->prepare ("INSERT INTO mainlogin (id,nombre,email,password,role) VALUES (:id,:nombre,:email,:password,:role)");
     //bindamos' ó enlazamos los registros con bindParam
-    $sql -> bindParam(':codigo', $codigo);
+    $sql -> bindParam(':id ', $id);
     $sql -> bindParam(':nombre', $nombre);
-    $sql -> bindParam(':precio', $precio);
-    $sql -> bindParam(':cantidad', $cantidad);
-    $sql -> bindParam(':proveedor', $proveedor);
+    $sql -> bindParam(':email', $email);
+    $sql -> bindParam(':password', $password);
+    $sql -> bindParam(':role', $role);
 
 
     $sql->execute();
@@ -41,22 +41,22 @@ function insertArticulo($id,$nombre,$email,$password,$role){
     }
 
 
-  function updateArticulo($codigo,$nombre,$precio,$cantidad,$proveedor){
+  function updateVendedor($id,$nombre,$email,$password,$role){
         try{
             $conn = $this->connect();
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = $conn->prepare("UPDATE productos SET nombre = :nombre,
-                                                        precio = :precio,
-                                                        cantidad = :cantidad,
-                                                        proveedor=:proveedor,
-                                                   WHERE codigo = :codigo"); 
-            $sql -> bindParam(':codigo', $codigo);
+            $sql = $conn->prepare("UPDATE mainlogin SET nombre = :nombre,
+                                                        email = :email,
+                                                        password = :password,
+                                                        role=:role
+                                                   WHERE id = :id"); 
+            $sql -> bindParam(':id', $id);
             $sql -> bindParam(':nombre', $nombre);
-            $sql -> bindParam(':precio', $precio);
-            $sql -> bindParam(':cantidad', $cantidad);
-            $sql -> bindParam(':proveedor', $proveedor);
+            $sql -> bindParam(':email', $email);
+            $sql -> bindParam(':password', $password);
+            $sql -> bindParam(':role', $role);
             $sql->execute();
-        echo $sql->rowCount() . " registros Actualizados Satisfactoriamente";
+        echo $sql->rowCount() . " Registros Actualizados Satisfactoriamente";
         return  $sql->rowCount();
         }catch(PDOException $error)
             {
@@ -65,15 +65,15 @@ function insertArticulo($id,$nombre,$email,$password,$role){
      $conn = null;
     }
 
-function deleteArticulo($codigo){
+function deleteVendedor($id){
     try {
         $conn = $this->connect();    
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $consulta = "DELETE FROM productos WHERE codigo = :codigo";
+        $consulta = "DELETE FROM mainlogin WHERE id = :id";
        
         $sql = $conn->prepare($consulta);
-        $sql->bindParam(':codigo', $codigo);
+        $sql->bindParam(':id', $id);
         $sql->execute();
         return $sql->rowCount();
         }
@@ -91,7 +91,7 @@ function listar(){
     try {
         $conn = $this->connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = $conn->prepare("SELECT * FROM productos"); 
+        $sql = $conn->prepare("SELECT * FROM mainlogin"); 
         $sql->execute();
         $resultado = $sql->setFetchMode(PDO::FETCH_ASSOC);
         foreach(new listarTabla(new RecursiveArrayIterator($sql->fetchAll())) as $key=>$valor) { 
