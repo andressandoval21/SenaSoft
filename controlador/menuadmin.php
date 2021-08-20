@@ -67,6 +67,45 @@ include_once '../modelo/daoproducto.php';
 
 
 
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-pills">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="menuadmin.php">Inicio</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="../vista/index.php">Cerrar Seccion</a>
+
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Productos</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="../controlador/buscarProducto.php">Buscar Productos</a>
+      <a class="dropdown-item" href="../controlador/registroProducto.php">Registrar Productos</a>
+      <a class="dropdown-item" href="../controlador/editarProducto.php">Editar Producto</a>
+
+    </div>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="menuadmin.php">Vendedor</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="../controlador/registroVendedor.php">Registrar Nuevo Vendedor</a>
+      <a class="dropdown-item" href="../vista/index.php">Eliminar  Vendedor</a>
+      <a class="dropdown-item" href="../vista/index.php">Actualizar  Vendedor</a>
+
+    </div>
+  </li>
+</ul>
+
+
 <?php
 
     if(isset($_POST['actualizar'])){
@@ -92,12 +131,6 @@ include_once '../modelo/daoproducto.php';
     }
 ?>
 
-
-
-
-
-
-
 <?php 
 
     if(isset($_POST['editar'])){
@@ -114,7 +147,9 @@ include_once '../modelo/daoproducto.php';
   
       $obj = $stmt->fetchObject();
 ?>
- 
+
+
+
 <div class="col-12 col col-md-12"> 
 
 <form role = "form" method = "POST" action="<?php echo $_SERVER['PHP_SELF'] ?>"> 
@@ -122,7 +157,7 @@ include_once '../modelo/daoproducto.php';
     <div class="form-row"> 
 
     <div class="form-group col-md-6">  
-    <label for="nombre"> Nombre </label>
+    <label for="Firstname"> Nombre </label>
     <input value = "<?php echo $obj->nombre?>" name = "nombre" type = "text" class="form-control" id="nombre" placeholder="nombre">
     </div>
    </div>
@@ -131,20 +166,24 @@ include_once '../modelo/daoproducto.php';
     <label for="precio"> Precio </label>
     <input value = "<?php echo $obj->precio; ?>" name = "precio" type = "text" class="form-control" id="precio" placeholder="precio">
     </div>
-   
-    <div class="form-group col-md-6">
-    <label for="cantidad"> Cantidad </label>  
+    <div class="form-row"> 
+   <div class="form-group col-md-6">  
+    <label for="cantidad"> Cantidad </label>
     <input value = "<?php echo $obj->cantidad; ?>" name = "cantidad" type = "text" class="form-control" id="cantidad" placeholder="cantidad">
     </div>
 
-    <div class="form-group col-md-6">
-    <label for="proveedor"> Proveedor </label>  
+    <div class="form-group col-md-6">  
+    <label for="proveedor"> Proveedor </label>
     <input value = "<?php echo $obj->proveedor; ?>" name = "proveedor" type = "text" class="form-control" id="proveedor" placeholder="proveedor">
     </div>
- </div>
+    
 
  <div class="form-group"> 
     <button name="actualizar" type= "submit" class="btn btn-primary btn-block">Actualizar Registro</button>
+    
+ </div>
+ <div class="form-group col-md-4">
+ <button name="cancelar" type= "submit" class="btn btn-primary btn-block">Cancelar</button>
  </div>
  </form>
 </div>
@@ -152,37 +191,6 @@ include_once '../modelo/daoproducto.php';
 <?php 
 } 
 ?>
-<ul class="nav nav-pills">
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="menuadmin.php">Inicio</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="../vista/index.php">Cerrar Seccion</a>
-
-    </div>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Productos</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="../controlador/buscarProducto.php">Buscar Productos</a>
-      <a class="dropdown-item" href="../controlador/registroProducto.php">Registro Productos</a>
-
-    </div>
-
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="menuadmin.php">Vendedor</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="../vista/index.php">Registrar Nuevo Vendedor</a>
-      <a class="dropdown-item" href="../vista/index.php">Eliminar  Vendedor</a>
-      <a class="dropdown-item" href="../vista/index.php">Actualizar  Vendedor</a>
-
-    </div>
-  </li>
-</ul>
-
-
-
-
-
  
 
 
@@ -227,18 +235,19 @@ include_once '../modelo/daoproducto.php';
                 <td>".$result -> proveedor."</td>
                 
                 
-                <td> 
-                    <form method='POST' action='".$_SERVER['PHP_SELF']."'>
-                    <input type='hidden' name='codigo' value = '".$result->codigo."'>
-                    <button name='editar'>Editar</button>
-                    </form>
+
                 </td>
                 <td> 
                 <form onsubmit=\"return confirm('Realmente desea eliminar el registro?';\"method='POST' action='".$_SERVER['PHP_SELF']."'>   
                     <input type='hidden' name='codigo' value = '".$result->codigo."'>
                     <button name='eliminar'>Eliminar</button>
                     </form>
-
+                  <td> 
+                    <form method='POST' action='".$_SERVER['PHP_SELF']."'>
+                    <input type='hidden' name='codigo' value = '".$result->codigo."'>
+                    <button name='editar'>Editar</button>
+                    </form>
+                </td>
 
                 </td>   
                 </td>   
