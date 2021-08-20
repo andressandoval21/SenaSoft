@@ -153,44 +153,32 @@ include_once '../modelo/daoproducto.php';
 } 
 ?>
 <ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="menuadmin.php">Inicio</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="../vista/index.php">Cerrar Seccion</a>
+
+    </div>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Productos</a>
     <div class="dropdown-menu">
       <a class="dropdown-item" href="../controlador/buscar.php">Buscar Productos</a>
       <a class="dropdown-item" href="../controlador/registro.php">Registro Productos</a>
-      <a class="dropdown-item" href="#">Link 3</a>
+
     </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="menuadmin.php">Vendedor</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="../vista/index.php">Registrar Nuevo Vendedor</a>
+      <a class="dropdown-item" href="../vista/index.php">Eliminar  Vendedor</a>
+      <a class="dropdown-item" href="../vista/index.php">Actualizar  Vendedor</a>
+
+    </div>
   </li>
 </ul>
 
-<div style="float:right; margin-bottom:10px;"> 
-        
-        
-        
-        <form method="post" action="">
-            <a href="../controlador/buscar.php"><input type="button" value="buscar" class="btn btn-outline-primary"></a>
-            
-            <button class="btn btn-primary" name="formInsertar">Nuevo registro</button>
-
-            <a href="../controlador/menuadmin.php">
-            <button type="button" class="btn btn-primary">Cancelar</button>
-            </a>
-
-            <a href="../vista/index.php">
-            <button type="button" class="btn btn-primary">Salir</button>
-            </a>
-        </form>
-        
-</div>
 
 
 
