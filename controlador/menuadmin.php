@@ -163,8 +163,8 @@ include_once '../modelo/daoproducto.php';
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Productos</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="../controlador/buscar.php">Buscar Productos</a>
-      <a class="dropdown-item" href="../controlador/registro.php">Registro Productos</a>
+      <a class="dropdown-item" href="../controlador/buscarProducto.php">Buscar Productos</a>
+      <a class="dropdown-item" href="../controlador/registroProducto.php">Registro Productos</a>
 
     </div>
 
