@@ -56,7 +56,7 @@ include_once "../modelo/conexion.php"
     
     <div class="form-group"><br>
         <button name="insertar" type= "submit" class="btn btn-primary btn-block"> Guardar</button>
-        <a href="../controlador/menuadmin.php">
+        <a href="menuadmin.php">
             <button type="button" class="btn btn-primary">Salir</button>
     </div>
     

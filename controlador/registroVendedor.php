@@ -25,28 +25,33 @@ include_once "../modelo/conexion.php"
 
 <div class="col-12 col col-md-12"> 
 <div class="container">
-<form role = "form" method = "POST" action="<?php echo $_SERVER['PHP_SELF'] ?>"> 
+<form rol = "form" method = "POST" action="<?php echo $_SERVER['PHP_SELF'] ?>"> 
         
         <div class="form-row"> 
         <div class="form-group col-md-6"><br>  
         <label for="id"> Id</label> </label>
         <input name = "id" type = "text" class="form-control" id="id" placeholder="id">
         </div>
+
+        <div class="form-row">
         <div class="form-group col-md-6"><br> 
         <label for="nombre">  Nombre </label>
         <input name = "nombre" type = "text" class="form-control" id="nombre" placeholder="nombre">
         </div>
-    </div>
-    <div class="form-row"> 
-    <div class="form-group col-md-6"> <br> 
+        
+        <div class="form-row"> 
+        <div class="form-group col-md-6"> <br> 
         <label for="email"> Email </label>
         <input name = "email" type = "text" class="form-control" id="email" placeholder="email">
         </div>
-    
+
+        <div class="form-row">
         <div class="form-group col-md-6"> <br> 
         <label for="pass"> Password </label>
         <input name = "pass" type = "password" class="form-control" id="pass" placeholder="password">
+        </div>
         
+        <div class="form-row">
         <div class="form-group col-md-12"><br>  
         <label for="rol"> Rol </label>
         <input name = "rol" type = "text" class="form-control" id="rol" placeholder="rol">
@@ -61,10 +66,12 @@ include_once "../modelo/conexion.php"
     </div>
     
     </form>
-
+</div>
 </div>
 </body>
 </html>
+
+
 <?php
     if(isset($_POST['insertar'])){
         $id = $_POST['id'];

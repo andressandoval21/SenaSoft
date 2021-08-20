@@ -17,7 +17,7 @@ function insertVendedor($id,$nombre,$email,$pass,$rol){
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //haciendo la consulta 
     //usando Sentencias Preparadas 'Prepared Statement'
-    $sql = $conn->prepare ("INSERT INTO mainlogin (id,nombre,email,pass,rol) VALUES (:id,:nombre,:email,:pass,:rol)");
+    $sql = $conn->prepare ("INSERT INTO mainlogin (id,nombre,email,pass,rol) VALUES (:id, :nombre, :email, :pass,:rol)");
     //bindamos' ó enlazamos los registros con bindParam
     $sql -> bindParam(':id ', $id);
     $sql -> bindParam(':nombre', $nombre);
@@ -55,8 +55,9 @@ function insertVendedor($id,$nombre,$email,$pass,$rol){
             $sql -> bindParam(':email', $email);
             $sql -> bindParam(':pass', $pass);
             $sql -> bindParam(':rol', $rol);
+
             $sql->execute();
-        echo $sql->rowCount() . " Registros Actualizados Satisfactoriamente";
+            $sql->rowCount() . " Registros Actualizados Satisfactoriamente";
         return  $sql->rowCount();
         }catch(PDOException $error)
             {

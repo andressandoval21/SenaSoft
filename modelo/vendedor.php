@@ -7,17 +7,17 @@ class VENDEDOR extends bdconnect{
      private $id;
      private $nombre;
      private $email;
-     private $password;
-     private $role;
+     private $pass;
+     private $rol;
 
 
-     public function __construct($id,$nombre,$email,$password,$role)
+     public function __construct($id,$nombre,$email,$pass,$rol)
      {
       $this->id=$id;
       $this->nombre=$nombre;
-      $this->password=$password;
-      $this->role=$role;
       $this->email=$email;
+      $this->pass=$pass;
+      $this->rol=$rol;
 
 
      }
@@ -37,15 +37,15 @@ class VENDEDOR extends bdconnect{
      public function getEmail(){
         return $this->email;}
 
-     public function setPassword($password){
-         $this->password=$password;}
-     public function getPassword(){
-         return $this->password;}
+     public function setPass($pass){
+         $this->pass=$pass;}
+     public function getPass(){
+         return $this->pass;}
 
-     public function setRole($role){
-         $this->role=$role;}
-     public function getRole(){
-     return $this->role;}
+     public function setRol($rol){
+         $this->rol=$rol;}
+     public function getRol(){
+     return $this->rol;}
 
 
      
