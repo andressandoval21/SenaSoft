@@ -9,7 +9,7 @@ class DaoVendedor extends bdconnect{
     }
 
 
-function insertVendedor($id,$nombre,$email,$password,$role){
+function insertVendedor($id,$nombre,$email,$pass,$rol){
     try {
     //Crear la conexión
     $conn = $this->connect();
@@ -17,13 +17,13 @@ function insertVendedor($id,$nombre,$email,$password,$role){
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //haciendo la consulta 
     //usando Sentencias Preparadas 'Prepared Statement'
-    $sql = $conn->prepare ("INSERT INTO mainlogin (id,nombre,email,password,role) VALUES (:id,:nombre,:email,:password,:role)");
+    $sql = $conn->prepare ("INSERT INTO mainlogin (id,nombre,email,pass,rol) VALUES (:id,:nombre,:email,:pass,:rol)");
     //bindamos' ó enlazamos los registros con bindParam
     $sql -> bindParam(':id ', $id);
     $sql -> bindParam(':nombre', $nombre);
     $sql -> bindParam(':email', $email);
-    $sql -> bindParam(':password', $password);
-    $sql -> bindParam(':role', $role);
+    $sql -> bindParam(':pass', $pass);
+    $sql -> bindParam(':rol', $rol);
 
 
     $sql->execute();
@@ -41,20 +41,20 @@ function insertVendedor($id,$nombre,$email,$password,$role){
     }
 
 
-  function updateVendedor($id,$nombre,$email,$password,$role){
+  function updateVendedor($id,$nombre,$email,$pass,$rol){
         try{
             $conn = $this->connect();
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = $conn->prepare("UPDATE mainlogin SET nombre = :nombre,
                                                         email = :email,
-                                                        password = :password,
-                                                        role=:role
+                                                        pass = :pass,
+                                                        rol=:rol
                                                    WHERE id = :id"); 
             $sql -> bindParam(':id', $id);
             $sql -> bindParam(':nombre', $nombre);
             $sql -> bindParam(':email', $email);
-            $sql -> bindParam(':password', $password);
-            $sql -> bindParam(':role', $role);
+            $sql -> bindParam(':pass', $pass);
+            $sql -> bindParam(':rol', $rol);
             $sql->execute();
         echo $sql->rowCount() . " Registros Actualizados Satisfactoriamente";
         return  $sql->rowCount();

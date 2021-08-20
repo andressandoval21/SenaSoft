@@ -30,7 +30,7 @@ include_once "../modelo/conexion.php"
         <div class="form-row"> 
         <div class="form-group col-md-6"><br>  
         <label for="id"> Id</label> </label>
-        <input name = "codigo" type = "text" class="form-control" id="id" placeholder="id">
+        <input name = "id" type = "text" class="form-control" id="id" placeholder="id">
         </div>
         <div class="form-group col-md-6"><br> 
         <label for="nombre">  Nombre </label>
@@ -44,18 +44,18 @@ include_once "../modelo/conexion.php"
         </div>
     
         <div class="form-group col-md-6"> <br> 
-        <label for="password"> Password </label>
-        <input name = "password" type = "text" class="form-control" id="password" placeholder="password">
+        <label for="pass"> Password </label>
+        <input name = "pass" type = "password" class="form-control" id="pass" placeholder="password">
         
         <div class="form-group col-md-12"><br>  
-        <label for="role"> Rol </label>
-        <input name = "role" type = "text" class="form-control" id="role" placeholder="role">
+        <label for="rol"> Rol </label>
+        <input name = "rol" type = "text" class="form-control" id="rol" placeholder="rol">
         </div>
     </div>
 
     
     <div class="form-group"><br>
-        <button name="insertar" type= "submit" class="btn btn-primary btn-block"> Guardar</button>
+        <button name="insertar" type= "submit" class="btn btn-primary btn-block"> Guardar </button>
         <a href="../controlador/menuadmin.php">
             <button type="button" class="btn btn-primary">Salir</button>
     </div>
@@ -67,15 +67,15 @@ include_once "../modelo/conexion.php"
 </html>
 <?php
     if(isset($_POST['insertar'])){
-        $codigo = $_POST['codigo'];
+        $id = $_POST['id'];
         $nombre = $_POST['nombre'];
-        $precio = $_POST['precio'];
-        $cantidad = $_POST['cantidad'];
-        $proveedor=$_POST['proveedor'];
+        $email = $_POST['email'];
+        $pass = $_POST['pass'];
+        $rol=$_POST['rol'];
         
 
-    $daoProducto =  new DaoArticulo();
-    $reg = $daoProducto->insertArticulo($codigo,$nombre,$precio,$cantidad,$proveedor);
+    $daoVendedor =  new DaoVendedor();
+    $reg = $daoVendedor->insertVendedor($id,$nombre,$email,$pass,$rol);
 
     if($reg > 0)
     {

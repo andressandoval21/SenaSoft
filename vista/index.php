@@ -9,11 +9,11 @@ $errorMsgLogin='';
 if (!empty($_POST['loginSubmit'])) 
 {
 $email=$_POST['email'];
-$password=$_POST['password'];
-$role=$_POST['role'];
-if(strlen(trim($email))>1 && strlen(trim($password))>1 && strlen(trim($role))>1)
+$pass=$_POST['pass'];
+$rol=$_POST['rol'];
+if(strlen(trim($email))>1 && strlen(trim($pass))>1 && strlen(trim($rol))>1)
 {
-$email=$userClass->userLogin($email,$password,$role);
+$email=$userClass->userLogin($email,$pass,$rol);
 if($email)
 {
 
@@ -52,12 +52,12 @@ $errorMsgLogin="Please check login details.";
     <input type="text" name="email" class="fadeIn second"placeholder="Correo" autocomplete="off" />
 
     
-    <input type="password" name="password"class="fadeIn second"placeholder="Contraseña" autocomplete="off"/>
+    <input type="password" name="pass"class="fadeIn second"placeholder="Contraseña" autocomplete="off"/>
 
     <div class="form-group">
     
     <div class="col-sm-12">
-    <select class="fadeIn second" name="role">
+    <select class="fadeIn second" name="rol">
     <option value="" selected="selected"> - selecccionar rol - </option>
     <option value="admin">Admin</option>
     <option value="personal">Personal</option>
