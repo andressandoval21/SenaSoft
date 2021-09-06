@@ -13,7 +13,7 @@ include_once '../modelo/daoproducto.php';
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
-<title>Crud PDO PHP Y MySQL</title>
+<title>SENASOFT</title>
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -35,7 +35,7 @@ include_once '../modelo/daoproducto.php';
 <body>
 <header>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> 
-  <a class="navbar-brand" href="#">WORKSHOP MVC </a>
+  <a class="navbar-brand" href="#">SENASOFT </a>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active"> <a class="nav-link" href="../controlador/menuadmin.php">Inicio <span class="sr-only"></span></a> </li>
